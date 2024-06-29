@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "223387978912",
+    "project_id": "studywithai-2dce2",
+    "storage_bucket": "studywithai-2dce2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223387978912:android:57d8b62d484b2024d30dc5",
+        "android_client_info": {
+          "package_name": "com.geminiai.studywithai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtFOPrMoPlotxk0IENGcPgXvSDaA1Mk9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
