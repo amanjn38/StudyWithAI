@@ -34,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -50,4 +53,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+//    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
+//    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
 }

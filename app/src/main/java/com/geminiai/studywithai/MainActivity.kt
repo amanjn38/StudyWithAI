@@ -4,10 +4,12 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.geminiai.studywithai.screens.ui.PickPDFFragment
 import com.geminiai.studywithai.utils.API_KEY
 import com.google.ai.client.generativeai.GenerativeModel
 import com.geminiai.studywithai.utils.Constants
@@ -15,6 +17,7 @@ import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,7 +27,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, PickPDFFragment())
+//                .commitNow()
+//        }
 //        getTextResponse()
 //        generateTextFromImage()
 //        generateTextFromMultipleImages()
@@ -51,11 +58,11 @@ class MainActivity : AppCompatActivity() {
             apiKey = API_KEY
         )
 
-        val cookieImage: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.cookie)
+        val cookieImage: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.question)
 
         val inputContent = content() {
             image(cookieImage)
-            text("Can you explain this to me?")
+            text("Can you explain this to me? And can you provide the solution?")
         }
         lifecycleScope.launch {
             val response = generativeModel.generateContent(inputContent)
@@ -110,9 +117,11 @@ class MainActivity : AppCompatActivity() {
             modelName = "gemini-1.5-flash",
             apiKey = API_KEY
         )
+        val cookieImage: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.question)
 
-        val inputContent = content {
-            text("Write a story about a magic backpack.")
+        val inputContent = content() {
+            image(cookieImage)
+            text("Can you explain this to me? And can you provide the solution?")
         }
 
         lifecycleScope.launch {
