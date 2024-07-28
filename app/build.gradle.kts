@@ -1,7 +1,11 @@
+import com.github.javaparser.printer.lexicalpreservation.Kept
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.hiltAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -37,6 +41,14 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude ("META-INF/NOTICE")
+        exclude ("META-INF/LICENSE")
+        exclude ("META-INF/LICENSE.txt")
+        exclude ("META-INF/NOTICE.txt")
+    }
 }
 
 dependencies {
@@ -52,7 +64,19 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
-//    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
-//    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
+    implementation(libs.pdfbox.android)
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.mathview)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.generativeai)
+    implementation("com.pdftron:pdftron:10.1.0")
+    implementation("com.pdftron:tools:10.1.0")
+    implementation("com.google.firebase:firebase-functions:21.0.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.2")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp-sse:4.9.2")
 }

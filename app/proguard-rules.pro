@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep Firebase classes
+-keep class com.google.firebase.** { *; }
+-keep class io.grpc.** { *; }
+-keep class com.squareup.okhttp.** { *; }
+
+# Keep GSON (if used)
+-keepattributes Signature
+-keepattributes *Annotation*
